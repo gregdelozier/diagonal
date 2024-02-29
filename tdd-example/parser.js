@@ -9,7 +9,7 @@ function asc(c) {
 }
 
 function parse(s) {
-    n = 0
+    n = 89
     decimal = 0;
     fraction = 0.1
     for (i = 0; i < s.length; i++) {
