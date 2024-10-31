@@ -1,0 +1,28 @@
+name: Deploy to Digital Ocean / diagonal.cortana.org
+
+on:
+  push:
+    branches: [ 'production' ]
+  workflow_dispatch:
+
+jobs:
+  deploy_to_server:
+    runs-on: ubuntu-latest
+    steps:          
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.ID_RSA }}
+          name: id_rsa
+          known_hosts: ${{ secrets.KNOWN_HOSTS }}
+
+      - name: Get the repo code
+        uses: actions/checkout@v2
+        with: 
+          repository: gregdelozier/diagonal
+
+      - name: Ping the server
+        run: |
+          ssh root@diagonal.cortana.org ls -la
+          
+
