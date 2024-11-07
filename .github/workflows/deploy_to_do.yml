@@ -5,6 +5,12 @@ on:
     branches: [ 'production' ]
   workflow_dispatch:
 
+env:
+  HOST: diagonal.cortana.org
+  USER: root
+  TARGET: $USER@$HOST
+  SSH_OPTIONS: -o LogLevel=ERROR -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
+
 jobs:
   deploy_to_server:
     runs-on: ubuntu-latest
@@ -23,6 +29,7 @@ jobs:
 
       - name: Ping the server
         run: |
-          ssh root@diagonal.cortana.org ls -la
+          export RUN="ssh $SSH_OPTIONS $TARGET"
+          $RUN 'ls -la'
           
 
