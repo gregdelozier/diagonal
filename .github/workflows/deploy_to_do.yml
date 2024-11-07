@@ -34,4 +34,7 @@ jobs:
           echo "hello" >hello.txt
           $COPY hello.txt $TARGET:/tmp
           
+      - name: Copy code to server
+        run: |
+          ls -la
 
