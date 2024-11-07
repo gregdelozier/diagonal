@@ -8,7 +8,8 @@ on:
 env:
   HOST: diagonal.cortana.org
   USER: root
-  TARGET: $USER@$HOST
+  TARGET: root@diagonal.cortana.org
+  RUN: ssh -o LogLevel=ERROR -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@diagonal.cortana.org
   SSH_OPTIONS: -o LogLevel=ERROR -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
 
 jobs:
@@ -29,7 +30,6 @@ jobs:
 
       - name: Ping the server
         run: |
-          export RUN="ssh $SSH_OPTIONS $TARGET"
           $RUN 'ls -la'
           
 
