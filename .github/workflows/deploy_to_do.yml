@@ -36,5 +36,8 @@ jobs:
           
       - name: Copy code to server
         run: |
-          ls -la
+          $COPY index.html $TARGET:/root/web
+          $COPY sketch.js $TARGET:/root/web
+          $COPY style.css $TARGET:/root/web
+          ls -la /root/web
 
