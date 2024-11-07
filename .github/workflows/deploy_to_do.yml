@@ -10,7 +10,7 @@ env:
   USER: root
   TARGET: root@diagonal.cortana.org
   RUN: ssh -o LogLevel=ERROR -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@diagonal.cortana.org
-  SSH_OPTIONS: -o LogLevel=ERROR -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
+  COPY: scp -o LogLevel=ERROR -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
 
 jobs:
   deploy_to_server:
@@ -31,5 +31,7 @@ jobs:
       - name: Ping the server
         run: |
           $RUN 'ls -la'
+          echo "hello" >hello.txt
+          $COPY hello.txt $TARGET:/tmp
           
 
