@@ -1,0 +1,31 @@
+name: testing
+
+on:
+  push:
+    branches: [ 'main', 'feature-*' ]
+  workflow_dispatch:
+
+jobs:
+  unit_testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v2
+      - name: Look at the files
+        run: |
+          echo $ ls -la 
+          ls -la 
+          echo $ pwd
+          pwd
+      - name: Verify node installation
+        run: |
+          echo "$ node --version"
+          node --version
+      - name: Test parser library
+        run: |
+          echo $ node parser.js        
+          node parser.js
+          
+
+
+
