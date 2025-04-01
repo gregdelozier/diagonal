@@ -11,10 +11,9 @@ env:
   COPY: scp -o LogLevel=ERROR -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
 
 jobs:
-  unit_testing:
+  deploy_to_cassini:
     runs-on: ubuntu-latest
     steps:
-    steps:          
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
         with:
