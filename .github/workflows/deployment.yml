@@ -48,7 +48,7 @@ jobs:
         run: |
           # kill the 'screen
           # ssh $USER$@$HOST 'screen -S diagonal -X quit'
-          $RUN 'screen -S diagonal -X quit'
+          $RUN 'screen -S diagonal -X quit' || true
           # ssh $TARGET 'screen -dmS myappname python -m http.server 9876'
           $RUN 'screen -dmS diagonal python -m http.server 9753'
 
